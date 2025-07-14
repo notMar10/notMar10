@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Index - iPortfolio Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Modal CSS -->
+  <style>
+    /* Modal fallback styles */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1040;
+    }
+
+    .modal-backdrop.fade {
+      opacity: 0;
+      transition: opacity 0.15s linear;
+    }
+
+    .modal-backdrop.show {
+      opacity: 1;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1050;
+      display: none;
+      overflow: hidden;
+      outline: 0;
+    }
+
+    .modal.show {
+      display: block;
+    }
+
+    .modal-dialog {
+      position: relative;
+      width: auto;
+      margin: 0.5rem;
+      pointer-events: none;
+      max-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .modal-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-height: 90vh;
+      pointer-events: auto;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 0.3rem;
+      outline: 0;
+      overflow: hidden;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid #dee2e6;
+      border-top-left-radius: calc(0.3rem - 1px);
+      border-top-right-radius: calc(0.3rem - 1px);
+      flex-shrink: 0;
+    }
+
+    .modal-body {
+      position: relative;
+      flex: 1 1 auto;
+      padding: 1rem;
+      overflow-y: auto;
+      max-height: calc(90vh - 120px);
+    }
+
+    .modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0.75rem;
+      border-top: 1px solid #dee2e6;
+      border-bottom-right-radius: calc(0.3rem - 1px);
+      border-bottom-left-radius: calc(0.3rem - 1px);
+      flex-shrink: 0;
+    }
+
+    .btn-close {
+      box-sizing: content-box;
+      width: 1em;
+      height: 1em;
+      padding: 0.25em 0.25em;
+      color: #000;
+      background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+      border: 0;
+      border-radius: 0.25rem;
+      opacity: 0.5;
+      cursor: pointer;
+    }
+
+    .btn-close:hover {
+      color: #000;
+      text-decoration: none;
+      opacity: 0.75;
+    }
+
+    @media (min-width: 576px) {
+      .modal-dialog {
+        max-width: 500px;
+        margin: 1.75rem auto;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .modal-dialog {
+        max-width: 800px;
+      }
+    }
+
+    /* Modal content styling */
+    .modal-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .modal-body h4 {
+      color: var(--heading-color);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .modal-body p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .modal-body ul {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+
+    .modal-body li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Custom scrollbar for modal body */
+    .modal-body::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .modal-body::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    .modal-body::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 4px;
+    }
+
+    .modal-body::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+    }
+
+    /* Gallery styling in modals */
+    .gallery-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .scroll-gallery-2row {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .gallery-row {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
+    .gallery-row-single {
+      justify-content: center;
+    }
+
+    /* Ensure modal is properly centered on mobile */
+    @media (max-width: 575px) {
+      .modal-dialog {
+        margin: 0.5rem;
+        max-width: calc(100% - 1rem);
+        min-height: auto;
+      }
+      
+      .modal-content {
+        max-height: 95vh;
+        margin: 0;
+      }
+      
+      .modal-body {
+        max-height: calc(95vh - 120px);
+        padding: 1rem;
+      }
+      
+      .modal-header {
+        padding: 0.75rem 1rem;
+      }
+      
+      .modal-header .modal-title {
+        font-size: 1.1rem;
+      }
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+  </style>
+
+  <!-- =======================================================
+  * Template Name: iPortfolio
+  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
+  * Updated: Jun 29 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header dark-background d-flex flex-column">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+
+    <div class="profile-img">
+      <img src="assets/img/my-profile-img.jpg" alt="" class="img-fluid rounded-circle">
+    </div>
+
+    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
+      <!-- Uncomment the line below if you also wish to use an image logo -->
+      <!-- <img src="assets/img/logo.png" alt=""> -->
+      <h1 class="sitename">Martin Nevalga</h1>
+    </a>
+
+    <div class="social-links text-center">
+      <a href="https://www.facebook.com/martin0214" class="facebook"><i class="bi bi-facebook"></i></a>
+      <a href="https://www.instagram.com/notmar.10/" class="instagram"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/martinnevalga/" class="linkedin" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
+    </div>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
+        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
+        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Curriculum Vitae</a></li>
+        <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>        
+        <li><a href="#final-report"><i class="bi bi-journal-text navicon"></i> Final Report</a></li>
+        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+      <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in" class="">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <h2>Martin Nevalga</h2>
+        <p>I'm <span class="typed" data-typed-items="a BSIT student, Tech Enthusiast, Bassist">a BSIT student</span></p>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-4">
+            <img src="assets/img/my-profile-img.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-8 content">
+            <h2>IT intern at City of Biñan Government</h2>
+            <h2>BSIT Student at at Mapúa Malayan Colleges Laguna</h2>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>14 February 2002</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+63 9162967660</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>23</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>nevalgamartin@gmail.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>City of Santa Rosa, Laguna, Philippines</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /About Section -->
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Curriculum Vitae</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="resume-title">Certificates & Seminars</h3>
+
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="resume-item">
+                <h4>Certificates</h4>
+                <ul>
+                  <li><a href="https://www.credly.com/badges/931e398b-a95c-4732-963c-0f1cf7e5af9c/linked_in_profile" target="_blank">CompTIA IT Fundamentals+ (ITF+) Certification</a></li>
+                  <li><a href="https://www.credly.com/badges/1b9116f8-e6c8-4717-8275-0c520fe1c984/linked_in_profile" target="_blank">AWS Academy Graduate - AWS Academy Cloud Foundations</a></li>
+                  <li><a href="https://www.credly.com/badges/edf98935-ff04-40a5-a21a-146f2af18916/linked_in_profile" target="_blank">CCNA: Introduction to Networks</a></li>
+                  <li><a href="https://www.cloudskillsboost.google/public_profiles/7f2016ff-0a1b-4d04-87ba-36a5d4be94f5" target="_blank">Google Cloud Skills Boost Badges</a></li>
+                </ul>
+              </div><!-- Edn Resume Item -->
+  
+              <div class="resume-item">
+                <h4>Seminars</h4>
+                <ul>
+                  <li><a href="https://www.linkedin.com/in/martinnevalga/details/certifications/1741513742273/single-media-viewer/?profileId=ACoAAE_7nxQBzM7d42ErT4cEXAQn-yCEgtDwWgU" target="_blank">WearOS: Emerging Technology for Internet and Learning of Everything</a></li>
+                  <li><a href="https://www.linkedin.com/in/martinnevalga/details/certifications/1741513606827/single-media-viewer/?profileId=ACoAAE_7nxQBzM7d42ErT4cEXAQn-yCEgtDwWgU" target="_blank">Generative AI for Beginners</a></li>
+                  <li><a href="https://www.linkedin.com/in/martinnevalga/details/certifications/1741513528837/single-media-viewer/?profileId=ACoAAE_7nxQBzM7d42ErT4cEXAQn-yCEgtDwWgU" target="_blank">Introduction to Firewall</a></li>
+                  <li><a href="https://www.linkedin.com/in/martinnevalga/details/certifications/1741513963269/single-media-viewer/?profileId=ACoAAE_7nxQBzM7d42ErT4cEXAQn-yCEgtDwWgU" target="_blank">Introduction to Edge Computing</a></li>
+                  <li><a href="https://www.linkedin.com/in/martinnevalga/details/certifications/1718978135945/single-media-viewer/?profileId=ACoAAE_7nxQBzM7d42ErT4cEXAQn-yCEgtDwWgU" target="_blank">CodeChum Python Course Completer</a></li>
+                </ul>
+              </div><!-- Edn Resume Item -->
+  
+            </div>
+
+            <h3 class="resume-title">Education</h3>
+            <div class="resume-item">
+              <h4>SENIOR HIGH SCHOOL </h4>
+              <h5>Accountancy, Business, and Management (2018-2020) </h5>
+            </div><!-- Edn Resume Item -->
+
+            <div class="resume-item">
+              <h4>COLLEGE </h4>
+              <h5>Bachelor of Science in Information Technology (2021-2025) </h5>
+              <p><em>Dean’s Lister (3rd year – 3rd term) </em></p>
+            </div><!-- Edn Resume Item -->
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="resume-title">Skills</h3>
+            <div class="resume-item">
+              <h4>SOFT SKILLS</h4>
+              <ul>
+                <li>Can work with a team </li>
+                <li>Communicating effectively</li>
+                <li>Managing time and setting priorities</li>
+                <li>Being flexible with new tools and technology</li>
+                <li>Being open to criticism and willing to learn</li>
+                <li>Solving problems </li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+
+            <div class="resume-item">
+              <h4>HARD SKILLS</h4>
+              <ul>
+                <li>Python</li>
+                <li>C#</li>
+                <li>C++</li>
+                <li>Arduino</li>
+                <li>PHP</li>
+                <li>XAMPP</li>
+                <li>MySQL</li>
+                <li>Firebase</li>
+                <li>IoT</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Familiar with Windows</li>
+                <li>Basic Networking</li>
+                <li>Basic understanding of Cloud Platforms</li>
+                <li>Basic Troubleshooting</li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="text-center">
+        <a href="assets/Curriculum Vitae.pdf" class="btn btn-primary mt-3" download>
+          <i class="bi bi-download"></i> Download CV
+        </a>
+      </div>
+    </section><!-- /Resume Section -->
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Portfolio</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-app">
+              <div class="portfolio-content h-100 modern-portfolio-card details-link" data-year="1st" tabindex="0" role="button" aria-label="View 1st Year Project Details">
+                <img src="assets\img\portfolio\1st Year.png" class="img-fluid modern-portfolio-img" alt="1st Year Project">
+                <div class="portfolio-info">
+                  <h4>1st Year (Machine Problem)</h4>
+                  <p>4 Pics 1 Word using Python Tkinter</p>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-product">
+              <div class="portfolio-content h-100 modern-portfolio-card details-link" data-year="2nd" tabindex="0" role="button" aria-label="View 2nd Year Project Details">
+                <img src="assets\img\portfolio\2nd Year.jpg" class="img-fluid modern-portfolio-img" alt="2nd Year Project">
+                <div class="portfolio-info">
+                  <h4>2nd Year (Machine Problem)</h4>
+                  <p>San Kakain App using Xamarin</p>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-branding">
+              <div class="portfolio-content h-100 modern-portfolio-card details-link" data-year="3rd" tabindex="0" role="button" aria-label="View 3rd Year Project Details">
+                <img src="assets\img\portfolio\3rd Year.jpg" class="img-fluid modern-portfolio-img" alt="3rd Year Project">
+                <div class="portfolio-info">
+                  <h4>3rd Year (Machine Problem)</h4>
+                  <p>River Monitoring System For<br>Flood Prevention and<br>Readiness Using Mobile Application and IOT</p>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-books">
+              <div class="portfolio-content h-100 modern-portfolio-card details-link" data-year="4th" tabindex="0" role="button" aria-label="View 4th Year Project Details">
+                <img src="assets\img\portfolio\4th Year.jpg" class="img-fluid modern-portfolio-img" alt="4th Year Project">
+                <div class="portfolio-info">
+                  <h4>4th Year (Capstone)</h4>
+                  <p>GIS-Based Flood Management System<br>Using Remote Sensing </p>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+          </div><!-- End Portfolio Container -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Section -->
+
+    <!-- Portfolio Modal -->
+    <div class="modal fade" id="portfolioModal" tabindex="-1" aria-labelledby="portfolioModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content modern-modal">
+          <div class="modal-header modern-modal-header">
+            <h5 class="modal-title" id="portfolioModalLabel"><i class="bi bi-folder2-open me-2"></i>Portfolio Details</h5>
+            <button type="button" class="btn-close modern-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body modern-modal-body" id="portfolioModalBody">
+            <!-- Content will be injected here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final Report Section -->
+    <section id="final-report" class="final-report section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Final Report</h2>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <h3>1. Overview of the Practicum Engagement</h3>
+        <p><em>Information & Communications Technology Office - ICTO Biñan , Continuation of Web Portal for Biñan City from previous MMCL IT Interns, 486 Hours</em></p>
+        <hr>
+        <h3>2. Presentation of Output</h3>
+        <p><em>Improved User Interface of Biñan City Web Portal and Admin Page</em></p>
+        <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-3 col-md-6">
+            <div class="modern-portfolio-card details-link final-report-img-card" data-imgs='["assets/img/portfolio/Home Page.png","assets/img/portfolio/Home Page 2.png","assets/img/portfolio/Home Page 3.png","assets/img/portfolio/Home Page 4.png","assets/img/portfolio/Home Page 5.png"]' data-caption="Home Page" tabindex="0" role="button" aria-label="View Home Page Screenshots">
+              <img src="assets/img/portfolio/Home Page.png" class="modern-portfolio-img" alt="Home Page Screenshot">
+              <div class="portfolio-info">
+                <h4>Home Page</h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="modern-portfolio-card details-link final-report-img-card" data-imgs='["assets/img/portfolio/Department Page.png","assets/img/portfolio/Department Page 2.png","assets/img/portfolio/Department Page 3.png"]' data-caption="Department Page" tabindex="0" role="button" aria-label="View Department Page Screenshots">
+              <img src="assets/img/portfolio/Department Page.png" class="modern-portfolio-img" alt="Department Page Screenshot">
+              <div class="portfolio-info">
+                <h4>Department Page</h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="modern-portfolio-card details-link final-report-img-card" data-imgs='["assets/img/portfolio/Job Page.png","assets/img/portfolio/Job Page 2.png"]' data-caption="Job Page" tabindex="0" role="button" aria-label="View Job Page Screenshots">
+              <img src="assets/img/portfolio/Job Page.png" class="modern-portfolio-img" alt="Job Page Screenshot">
+              <div class="portfolio-info">
+                <h4>Job Page</h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="modern-portfolio-card details-link final-report-img-card" data-imgs='["assets/img/portfolio/Admin Page.png","assets/img/portfolio/Admin Page 2.png","assets/img/portfolio/Admin Page 3.png"]' data-caption="Admin Page" tabindex="0" role="button" aria-label="View Admin Page Screenshots">
+              <img src="assets/img/portfolio/Admin Page.png" class="modern-portfolio-img" alt="Admin Page Screenshot">
+              <div class="portfolio-info">
+                <h4>Admin Page</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <h3>3. Synthesis of the Practicum Engagement</h3>
+        <p><em>During my internship at the Biñan Government as an IT intern, my group and I were assigned to update and test the existing web portal created by previous interns from Mapúa Malayan Colleges Laguna (MMCL). This task allowed me to enhance my skills in PHP and learn to work with the MVC (Model-View-Controller) framework, which was new to me. We also used various online resources to troubleshoot issues and improve the portal’s performance, which made me realize how valuable the internet is as a learning and development tool.
+
+          One of the biggest challenges I faced was managing my time effectively, as I was also working on our capstone project alongside my practicum. This experience taught me how to balance multiple responsibilities, meet deadlines, and stay productive despite the pressure.
+          
+          Overall, the practicum helped me grow not just technically, but also professionally. It gave me insight into how IT solutions are applied in real-world government settings and prepared me for future roles in the industry.</em></p>
+        <hr>
+        <h3>4. Appendices</h3>
+        <ul>
+          <li>1.0 <a href="assets/Curriculum Vitae.pdf" target="_blank">Competency-Based CV</a></li>
+          <li>2.0 <a href="#" target="_blank">Endorsement Letter</a></li>
+          <li>3.0 <a href="#" target="_blank">Practicum Acceptance</a></li>
+          <li>4.0 <a href="#" target="_blank">Liability Waiver</a></li>
+          <li>5.0 <a href="#" target="_blank">Training Plan</a></li>
+          <li>6.0 <a href="assets\weeklyreportcombined.pdf" target="_blank">Complete Weekly Journal</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Final Report Modal -->
+    <div class="modal fade" id="finalReportModal" tabindex="-1" aria-labelledby="finalReportModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content modern-modal">
+          <div class="modal-header modern-modal-header">
+            <h5 class="modal-title" id="finalReportModalLabel"><i class="bi bi-image me-2"></i>Screenshot Preview</h5>
+            <button type="button" class="btn-close modern-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body modern-modal-body text-center" id="finalReportModalBody">
+            <!-- Content will be injected here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+ 
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>Message to collaborate with me</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-5">
+
+            <div class="info-wrap">
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h3>Address</h3>
+                  <p>City of Santa Rosa, Laguna, Philippines</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <i class="bi bi-telephone flex-shrink-0"></i>
+                <div>
+                  <h3>Call Information>
+                  <p>+63 916 296 7660</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h3>Email</h3>
+                  <p>nevalgamartin@gmail.com</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.964964479836!2d121.1092183153556!3d14.312059789999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d7e2e2e2e2e3%3A0x9e9e9e9e9e9e9e9e!2sSanta%20Rosa%2C%20Laguna%2C%20Philippines!5e0!3m2!1sen!2sph!4v1718030000000!5m2!1sen!2sph" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <label for="name-field" class="pb-2">Your Name</label>
+                  <input type="text" name="name" id="name-field" class="form-control" required="">
+                </div>
+
+                <div class="col-md-6">
+                  <label for="email-field" class="pb-2">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="email-field" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <label for="subject-field" class="pb-2">Subject</label>
+                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <label for="message-field" class="pb-2">Message</label>
+                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                  <button type="submit">Send Message</button>
+                </div>
+
+              </div>
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Martin Portfolio</strong> <span>All Rights Reserved</span></p>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Modal JavaScript -->
+  <script>
+    // Initialize typed.js for hero section
+    document.addEventListener('DOMContentLoaded', function() {
+      const selectTyped = document.querySelector('.typed');
+      if (selectTyped) {
+        let typed_strings = selectTyped.getAttribute('data-typed-items');
+        typed_strings = typed_strings.split(',');
+        
+        // Check if Typed is available
+        if (typeof Typed !== 'undefined') {
+          new Typed('.typed', {
+            strings: typed_strings,
+            loop: true,
+            typeSpeed: 100,
+            backSpeed: 50,
+            backDelay: 2000
+          });
+        } else {
+          // Fallback: manually cycle through strings
+          let currentIndex = 0;
+          const typedElement = document.querySelector('.typed');
+          const cursorElement = document.querySelector('.typed-cursor');
+          
+          function updateText() {
+            if (typedElement && typed_strings[currentIndex]) {
+              typedElement.textContent = typed_strings[currentIndex];
+              currentIndex = (currentIndex + 1) % typed_strings.length;
+            }
+          }
+          
+          // Update text every 3 seconds
+          setInterval(updateText, 3000);
+        }
+      }
+    });
+
+    // Portfolio modal content for each year
+    const portfolioSummaries = {
+      '1st': `
+        <h4>1st Year (Machine Problem)</h4>
+        <p><strong>Project:</strong> 4 Pics 1 Word using Python Tkinter</p>
+        <p>A desktop game application developed in Python using Tkinter GUI library. The game challenges users to guess a word based on four images shown. This project honed my skills in Python programming and user interface design.</p>
+        <p><strong>Key Features:</strong></p>
+        <ul>
+          <li>Interactive GUI with Tkinter widgets</li>
+          <li>Image-based word guessing mechanics</li>
+          <li>Score tracking and game progression</li>
+          <li>User-friendly interface design</li>
+        </ul>
+        <p><strong>Software Used:</strong> PyCharm, Python, Tkinter</p>
+        <p><strong>Learning Outcomes:</strong> This project introduced me to Python programming fundamentals, GUI development, and basic game logic implementation. It helped me understand event-driven programming and user interface design principles.</p>
+        <img src="assets/img/portfolio/1st Year.png" class="img-fluid mb-2" alt="1st Year Project Screenshot">
+      `,
+      '2nd': `
+        <h4>2nd Year (Machine Problem)</h4>
+        <p><strong>Project:</strong> San Kakain App using Xamarin</p>
+        <p>A mobile application built with Xamarin that displays random popular restaurants to users. This project improved my skills in C# and cross-platform mobile development.</p>
+        <p><strong>Key Features:</strong></p>
+        <ul>
+          <li>Cross-platform mobile development with Xamarin</li>
+          <li>Random restaurant recommendation system</li>
+          <li>Mobile UI/UX design principles</li>
+          <li>Integration with restaurant databases</li>
+        </ul>
+        <p><strong>Software Used:</strong> Visual Studio, Xamarin, C#</p>
+        <p><strong>Learning Outcomes:</strong> This project enhanced my understanding of mobile app development, C# programming, and cross-platform development concepts. I learned about mobile UI design patterns and user experience considerations.</p>
+        <img src="assets/img/portfolio/2nd Year.jpg" class="img-fluid mb-2" alt="2nd Year Project Screenshot">
+      `,
+      '3rd': `
+        <h4>3rd Year (Machine Problem)</h4>
+        <p><strong>Project:</strong> River Monitoring System For Flood Prevention and Readiness Using Mobile Application and IoT</p>
+        <p>This project involved developing a mobile app and IoT system to monitor river levels for flood prevention. It included real-time data collection, alert notifications, and a dashboard for authorities. I learned about IoT integration, mobile app development, and teamwork.</p>
+        <p><strong>Key Features:</strong></p>
+        <ul>
+          <li>IoT sensor integration for water level monitoring</li>
+          <li>Real-time data collection and transmission</li>
+          <li>Mobile app for data visualization</li>
+          <li>Alert system for flood warnings</li>
+          <li>Dashboard for authorities and emergency responders</li>
+        </ul>
+        <p><strong>Software Used:</strong> Visual Studio, Arduino IDE, Xamarin</p>
+        <p><strong>Hardware Used:</strong> Arduino, Water Level Sensors</p>
+        <p><strong>Learning Outcomes:</strong> This project taught me about IoT development, sensor integration, real-time data processing, and the importance of interdisciplinary collaboration in solving real-world problems.</p>
+        <img src="assets/img/portfolio/3rd Year (2).jpg" class="gallery-img" alt="3rd Year Project Screenshot 1">
+        <img src="assets/img/portfolio/3rd Year.jpg" class="img-fluid mb-2" alt="3rd Year Project Screenshot 2"> 
+      `,
+      '4th': `
+        <h4>4th Year (Capstone)</h4>
+        <p><strong>Project:</strong> GIS-Based Flood Management System Using Remote Sensing</p>
+        <p>A capstone project focused on developing a GIS-based system for flood management using remote sensing data. The system helps in mapping flood-prone areas and provides decision support for disaster management. This project deepened my understanding of GIS, remote sensing, and project management.</p>
+        <p><strong>Key Features:</strong></p>
+        <ul>
+          <li>GIS-based flood mapping and analysis</li>
+          <li>Remote sensing data integration</li>
+          <li>Real-time flood monitoring capabilities</li>
+          <li>Decision support system for authorities</li>
+          <li>Historical flood data analysis</li>
+          <li>Predictive modeling for flood risk assessment</li>
+        </ul>
+        <p><strong>Software Used:</strong> Visual Studio Code, Arduino IDE, GIS Software</p>
+        <p><strong>Hardware Used:</strong> ESP32, Remote Sensing Equipment</p>
+        <p><strong>Learning Outcomes:</strong> This comprehensive project combined multiple technologies and disciplines, teaching me about GIS systems, remote sensing, data analysis, and the critical role of technology in disaster management and public safety.</p>
+        <div class="scroll-gallery-2row mb-3">
+          <div class="gallery-row">
+            <img src="assets/img/portfolio/4th Year.jpg" class="gallery-img" alt="4th Year Project Screenshot 1">
+            <img src="assets/img/portfolio/4th Year (1).jpg" class="gallery-img" alt="4th Year Project Screenshot 2">
+          </div>
+          <div class="gallery-row gallery-row-single">
+            <img src="assets/img/portfolio/4th Year (2).jpg" class="gallery-img" alt="4th Year Project Screenshot 3">
+          </div>
+        </div>
+      `
+    };
+
+    // Initialize modals when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM loaded, initializing modals...');
+      
+      // Wait a bit for all scripts to load
+      setTimeout(function() {
+        // Check if Bootstrap is available
+        if (typeof bootstrap === 'undefined') {
+          console.error('Bootstrap is not loaded! Modals may not work properly.');
+          // Try to load Bootstrap from CDN as fallback
+          const script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js';
+          script.onload = function() {
+            console.log('Bootstrap loaded from CDN fallback');
+            initializeModals();
+          };
+          script.onerror = function() {
+            console.error('Failed to load Bootstrap from CDN');
+            // Try to initialize modals anyway with fallback
+            initializeModals();
+          };
+          document.head.appendChild(script);
+        } else {
+          console.log('Bootstrap is available');
+          initializeModals();
+        }
+      }, 100);
+      
+      function initializeModals() {
+        console.log('Initializing modals...');
+        
+        // Function to ensure modal is scrollable
+        function ensureModalScrollable(modalElement) {
+          const modalBody = modalElement.querySelector('.modal-body');
+          if (modalBody) {
+            // Reset scroll position
+            modalBody.scrollTop = 0;
+            
+            // Always enable scrolling for modals to ensure consistency
+            modalBody.style.overflowY = 'auto';
+            modalBody.style.maxHeight = 'calc(90vh - 120px)';
+            
+            // Add padding to ensure content is scrollable even if it fits
+            if (modalBody.scrollHeight <= modalBody.clientHeight) {
+              modalBody.style.paddingBottom = '2rem';
+            }
+            
+            // Force a reflow to ensure proper height calculation
+            modalBody.offsetHeight;
+          }
+        }
+        
+        // Portfolio modal functionality
+        const portfolioModal = document.getElementById('portfolioModal');
+        const portfolioModalBody = document.getElementById('portfolioModalBody');
+        
+        if (portfolioModal && portfolioModalBody) {
+          console.log('Portfolio modal elements found');
+          
+          // Handle portfolio modal clicks
+          document.addEventListener('click', function(event) {
+            const portfolioCard = event.target.closest('.details-link[data-year]');
+            if (portfolioCard) {
+              console.log('Portfolio card clicked:', portfolioCard.getAttribute('data-year'));
+              const year = portfolioCard.getAttribute('data-year');
+              if (portfolioSummaries[year]) {
+                portfolioModalBody.innerHTML = portfolioSummaries[year];
+                try {
+                  const modal = new bootstrap.Modal(portfolioModal);
+                  modal.show();
+                  console.log('Portfolio modal shown successfully');
+                  
+                  // Ensure modal body is scrollable
+                  setTimeout(() => {
+                    ensureModalScrollable(portfolioModal);
+                  }, 100);
+                } catch (error) {
+                  console.error('Error showing portfolio modal:', error);
+                  // Fallback: manually show modal
+                  portfolioModal.style.display = 'block';
+                  portfolioModal.classList.add('show');
+                  document.body.classList.add('modal-open');
+                  const backdrop = document.createElement('div');
+                  backdrop.className = 'modal-backdrop fade show';
+                  document.body.appendChild(backdrop);
+                  
+                  // Ensure modal body is scrollable in fallback
+                  setTimeout(() => {
+                    ensureModalScrollable(portfolioModal);
+                  }, 100);
+                }
+              } else {
+                portfolioModalBody.innerHTML = '<p>Details not available.</p>';
+                try {
+                  const modal = new bootstrap.Modal(portfolioModal);
+                  modal.show();
+                } catch (error) {
+                  console.error('Error showing portfolio modal:', error);
+                  // Fallback: manually show modal
+                  portfolioModal.style.display = 'block';
+                  portfolioModal.classList.add('show');
+                  document.body.classList.add('modal-open');
+                  const backdrop = document.createElement('div');
+                  backdrop.className = 'modal-backdrop fade show';
+                  document.body.appendChild(backdrop);
+                  
+                  // Ensure modal body is scrollable in fallback
+                  setTimeout(() => {
+                    ensureModalScrollable(portfolioModal);
+                  }, 100);
+                }
+              }
+            }
+          });
+
+          // Clean up modal backdrop when portfolio modal is hidden
+          portfolioModal.addEventListener('hidden.bs.modal', function() {
+            document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = '';
+            console.log('Portfolio modal hidden, backdrop cleaned');
+          });
+          
+          // Manual close button handling
+          portfolioModal.querySelector('.btn-close').addEventListener('click', function() {
+            portfolioModal.style.display = 'none';
+            portfolioModal.classList.remove('show');
+            document.body.classList.remove('modal-open');
+            document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+          });
+          
+          // Backdrop click handling
+          portfolioModal.addEventListener('click', function(event) {
+            if (event.target === portfolioModal) {
+              portfolioModal.style.display = 'none';
+              portfolioModal.classList.remove('show');
+              document.body.classList.remove('modal-open');
+              document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+            }
+          });
+        } else {
+          console.error('Portfolio modal elements not found');
+        }
+
+        // Final Report modal functionality
+        const finalReportModal = document.getElementById('finalReportModal');
+        const finalReportModalBody = document.getElementById('finalReportModalBody');
+        
+        if (finalReportModal && finalReportModalBody) {
+          console.log('Final report modal elements found');
+          
+          // Handle final report modal clicks
+          document.addEventListener('click', function(event) {
+            const card = event.target.closest('.final-report-img-card');
+            if (card) {
+              console.log('Final report card clicked');
+              let imgs = card.getAttribute('data-imgs');
+              let html = '';
+              if (imgs) {
+                try {
+                  const imgArr = JSON.parse(imgs);
+                  html = imgArr.map(src => `<img src="${src}" class="img-fluid mb-3" alt="Screenshot" style="max-height:400px; border-radius:0.75rem; box-shadow:0 2px 12px rgba(60,60,90,0.10);">`).join('');
+                } catch (e) {
+                  console.error('Error parsing image data:', e);
+                  html = '';
+                }
+              } else {
+                const src = card.getAttribute('data-img');
+                html = `<img src="${src}" class="img-fluid mb-3" alt="${card.getAttribute('data-caption') || ''}" style="max-height:400px; border-radius:0.75rem; box-shadow:0 2px 12px rgba(60,60,90,0.10);">`;
+              }
+              const caption = card.getAttribute('data-caption') || '';
+              finalReportModalBody.innerHTML = `
+                ${html}
+                <div style="font-size:1.1rem; color:#4e54c8; font-weight:500;">${caption}</div>
+              `;
+              try {
+                const modal = new bootstrap.Modal(finalReportModal);
+                modal.show();
+                console.log('Final report modal shown successfully');
+                
+                // Ensure modal body is scrollable
+                setTimeout(() => {
+                  ensureModalScrollable(finalReportModal);
+                }, 100);
+              } catch (error) {
+                console.error('Error showing final report modal:', error);
+                // Fallback: manually show modal
+                finalReportModal.style.display = 'block';
+                finalReportModal.classList.add('show');
+                document.body.classList.add('modal-open');
+                const backdrop = document.createElement('div');
+                backdrop.className = 'modal-backdrop fade show';
+                document.body.appendChild(backdrop);
+                
+                // Ensure modal body is scrollable in fallback
+                setTimeout(() => {
+                  ensureModalScrollable(finalReportModal);
+                }, 100);
+              }
+            }
+          });
+
+          // Clean up modal backdrop when final report modal is hidden
+          finalReportModal.addEventListener('hidden.bs.modal', function() {
+            document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = '';
+            console.log('Final report modal hidden, backdrop cleaned');
+          });
+          
+          // Manual close button handling
+          finalReportModal.querySelector('.btn-close').addEventListener('click', function() {
+            finalReportModal.style.display = 'none';
+            finalReportModal.classList.remove('show');
+            document.body.classList.remove('modal-open');
+            document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+          });
+          
+          // Backdrop click handling
+          finalReportModal.addEventListener('click', function(event) {
+            if (event.target === finalReportModal) {
+              finalReportModal.style.display = 'none';
+              finalReportModal.classList.remove('show');
+              document.body.classList.remove('modal-open');
+              document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+            }
+          });
+        } else {
+          console.error('Final report modal elements not found');
+        }
+        
+        console.log('Modal initialization complete');
+        
+        // Handle window resize to ensure modals remain scrollable
+        window.addEventListener('resize', function() {
+          const activeModals = document.querySelectorAll('.modal.show');
+          activeModals.forEach(modal => {
+            ensureModalScrollable(modal);
+          });
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>
